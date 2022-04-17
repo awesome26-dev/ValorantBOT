@@ -58,8 +58,8 @@ public class UnirestSystem {
     public HttpResponse<JsonNode> put(String url) {
         JsonObject authObject = new JsonObject();
         authObject.addProperty("type", "auth");
-        authObject.addProperty("username", "KampfLesbeTv");
-        authObject.addProperty("password", "Feuerwehrnick2005");
+        authObject.addProperty("username", "r");
+        authObject.addProperty("password", "r");
 
         return Unirest.put(url)
                 .header("Accept", "application/json")
