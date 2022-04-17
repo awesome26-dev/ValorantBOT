@@ -24,10 +24,10 @@ public class BackEnd {
 
     public Object getStore(ValorantRegion valorantRegion) {
         ValorantHeader authHeader = new ValorantHeader(HttpHeaders.AUTHORIZATION, "Bearer " + getValorantAuthentication().getAccessToken());
+        System.out.println("enHeader");
         ValorantHeader enHeader = new ValorantHeader("X-Riot-Entitlements-JWT", getValorantAuthentication().getEntertainmentToken());
 
-
-        System.out.println(enHeader.getValue());
+        System.out.println();
 
         return unirestSystem.get(valorantRegion.getUrl() + "/store/v2/storefront/" + getValorantAuthentication().getUniqueId(), authHeader, enHeader).getBody();
     }

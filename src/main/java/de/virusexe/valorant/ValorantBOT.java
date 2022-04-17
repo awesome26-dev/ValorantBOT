@@ -23,7 +23,7 @@ public class ValorantBOT {
     private DiscordApi discordApi;
 
     public void start() throws MalformedURLException {
-        String token = "";
+        String token = "token";
         backEnd = new BackEnd();
 
        discordApi = new DiscordApiBuilder()
@@ -58,6 +58,8 @@ public class ValorantBOT {
 
         JsonNode userResponse = responseSystem.postHeader("https://auth.riotgames.com/userinfo", authHeader).getBody();
         String userId = userResponse.getObject().getString("sub");
+
+        System.out.println("Entity: " + entityToken);
 
         backEnd.auth(userId, accessToken, entityToken);
         System.out.println(backEnd.getStore(ValorantRegion.EU));

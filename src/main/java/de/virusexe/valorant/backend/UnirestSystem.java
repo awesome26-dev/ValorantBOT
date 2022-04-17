@@ -43,23 +43,20 @@ public class UnirestSystem {
 
     public HttpResponse get(String url, ValorantHeader... valorantHeader) {
         for(ValorantHeader header : valorantHeader){
-
-            System.out.println(1);
             return Unirest.get(url)
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
-                    .header(header.getKey(), header.getValue()).asJson();
+                    .header("X-Riot-Entitlements-JWT", header.value())
+                    .header(header.key(), header.value()).asJson();
         }
-
-        System.out.println(2);
         return null;
     }
 
     public HttpResponse<JsonNode> put(String url) {
         JsonObject authObject = new JsonObject();
         authObject.addProperty("type", "auth");
-        authObject.addProperty("username", "r");
-        authObject.addProperty("password", "r");
+        authObject.addProperty("username", "username");
+        authObject.addProperty("password", "password");
 
         return Unirest.put(url)
                 .header("Accept", "application/json")
